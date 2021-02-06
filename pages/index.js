@@ -1,14 +1,32 @@
+const registerCompany = async event => {
+  event.preventDefault()
+  console.log("send data");
+
+  const res = await fetch(
+    '/api/register',
+    {
+      body: JSON.stringify({
+        name: event.target.name.value
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST'
+    }
+  )
+};
+
 export default function Home() {
   return (
     <div>
-      <div className="p-10" style={{backgroundColor: "#A9D4B7"}}>
+      <div className="p-10" style={{ backgroundColor: "#A9D4B7" }}>
         <div className="md:grid md:gap-6">
           <div className="mt-5 md:mt-0 md:col-span-2">
-            <form action="#" method="POST">
+            <form onSubmit={registerCompany}>
               <div className="shadow sm:rounded-md sm:overflow-hidden">
                 <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
-                <h1 className="mt-6 text-3xl font-extrabold" style={{color: "#326D57"}}>Sustainable Me</h1>
-                    <div className="grid grid-cols-3 gap-6">
+                  <h1 className="mt-6 text-3xl font-extrabold" style={{ color: "#326D57" }}>Sustainable Me</h1>
+                  <div className="grid grid-cols-3 gap-6">
                     <div className="col-span-3 sm:col-span-2">
                       <label htmlFor="company_name" className="block text-sm font-medium text-gray-700">
                         Name
@@ -17,7 +35,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="grid grid-cols-3 gap-6">
-                  <div className="col-span-3 sm:col-span-2">
+                    <div className="col-span-3 sm:col-span-2">
                       <label htmlFor="company_email" className="block text-sm font-medium text-gray-700">
                         Email
                       </label>
@@ -38,212 +56,212 @@ export default function Home() {
                     </div>
                   </div>
 
-                    <legend className="text-base font-medium text-gray-900">What Categories does your company fall into?</legend>
-                    <div className="mt-4 grid grid-cols-1 md:grid-cols-2">
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="automotive" name="automotive" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="automotive" className="font-medium text-gray-700">Automotive</label>
-                        </div>
+                  <legend className="text-base font-medium text-gray-900">What Categories does your company fall into?</legend>
+                  <div className="mt-4 grid grid-cols-1 md:grid-cols-2">
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="automotive" name="automotive" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
                       </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="apparel" name="apparel" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="apparel" className="font-medium text-gray-700">Apparel</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="babyProducts" name="babyProducts" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="babyProducts" className="font-medium text-gray-700">Baby Products (Excluding Apparel)</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="alcohol" name="alcohol" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="alcohol" className="font-medium text-gray-700">Beer, Wine & Spirits</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="beauty" name="beauty" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="beauty" className="font-medium text-gray-700">Beauty</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="mbvd" name="mbvd" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="mbvd" className="font-medium text-gray-700">Music, Books, Video/DVD/ Blu-ray</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="computing" name="computing" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="computing" className="font-medium text-gray-700">Computing</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="C&VG" name="C&VG" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="C&VG" className="font-medium text-gray-700">Consoles & Video Games</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="electronics" name="electronics" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="electronics" className="font-medium text-gray-700">Consumer Electronics</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="DIY" name="DIY" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="DIY" className="font-medium text-gray-700">DIY & Tools</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="garden" name="garden" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="garden" className="font-medium text-gray-700">Garden & Outdoors</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="grocery" name="grocery" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="grocery" className="font-medium text-gray-700">Grocery</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="health" name="health" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="health" className="font-medium text-gray-700">Health & Personal Care</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="kitchen" name="kitchen" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="kitchen" className="font-medium text-gray-700">Kitchen & Home</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="lAppliances" name="lAppliances" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="lAppliances" className="font-medium text-gray-700">Large Appliances</label>
-                        </div>
-                      </div><div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="lighting" name="lighting" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="lighting" className="font-medium text-gray-700">Lighting</label>
-                        </div>
-                      </div><div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="jewellery" name="jewellery" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="jewellery" className="font-medium text-gray-700">Jewellery</label>
-                        </div>
-                      </div><div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="music" name="music" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="music" className="font-medium text-gray-700">Musical Instruments</label>
-                        </div>
-                      </div><div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="office" name="office" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="office" className="font-medium text-gray-700">Office Products</label>
-                        </div>
-                      </div><div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="personalCare" name="personalCare" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="personalCare" className="font-medium text-gray-700">Personal Care Appliances</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="pet" name="pet" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="pet" className="font-medium text-gray-700">Pet Supplies</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="shoes" name="shoes" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="shoes" className="font-medium text-gray-700">Shoes & Accessories</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="software" name="software" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="software" className="font-medium text-gray-700">Software & PC Games</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="sports" name="sports" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="sports" className="font-medium text-gray-700">Sporting Goods</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="toys" name="toys" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="toys" className="font-medium text-gray-700">Toys & Games</label>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center h-5">
-                          <input id="watches" name="watches" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="watches" className="font-medium text-gray-700">Watches</label>
-                        </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="automotive" className="font-medium text-gray-700">Automotive</label>
                       </div>
                     </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="apparel" name="apparel" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="apparel" className="font-medium text-gray-700">Apparel</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="babyProducts" name="babyProducts" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="babyProducts" className="font-medium text-gray-700">Baby Products (Excluding Apparel)</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="alcohol" name="alcohol" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="alcohol" className="font-medium text-gray-700">Beer, Wine & Spirits</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="beauty" name="beauty" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="beauty" className="font-medium text-gray-700">Beauty</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="mbvd" name="mbvd" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="mbvd" className="font-medium text-gray-700">Music, Books, Video/DVD/ Blu-ray</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="computing" name="computing" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="computing" className="font-medium text-gray-700">Computing</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="C&VG" name="C&VG" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="C&VG" className="font-medium text-gray-700">Consoles & Video Games</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="electronics" name="electronics" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="electronics" className="font-medium text-gray-700">Consumer Electronics</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="DIY" name="DIY" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="DIY" className="font-medium text-gray-700">DIY & Tools</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="garden" name="garden" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="garden" className="font-medium text-gray-700">Garden & Outdoors</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="grocery" name="grocery" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="grocery" className="font-medium text-gray-700">Grocery</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="health" name="health" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="health" className="font-medium text-gray-700">Health & Personal Care</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="kitchen" name="kitchen" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="kitchen" className="font-medium text-gray-700">Kitchen & Home</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="lAppliances" name="lAppliances" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="lAppliances" className="font-medium text-gray-700">Large Appliances</label>
+                      </div>
+                    </div><div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="lighting" name="lighting" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="lighting" className="font-medium text-gray-700">Lighting</label>
+                      </div>
+                    </div><div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="jewellery" name="jewellery" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="jewellery" className="font-medium text-gray-700">Jewellery</label>
+                      </div>
+                    </div><div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="music" name="music" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="music" className="font-medium text-gray-700">Musical Instruments</label>
+                      </div>
+                    </div><div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="office" name="office" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="office" className="font-medium text-gray-700">Office Products</label>
+                      </div>
+                    </div><div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="personalCare" name="personalCare" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="personalCare" className="font-medium text-gray-700">Personal Care Appliances</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="pet" name="pet" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="pet" className="font-medium text-gray-700">Pet Supplies</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="shoes" name="shoes" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="shoes" className="font-medium text-gray-700">Shoes & Accessories</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="software" name="software" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="software" className="font-medium text-gray-700">Software & PC Games</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="sports" name="sports" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="sports" className="font-medium text-gray-700">Sporting Goods</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="toys" name="toys" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="toys" className="font-medium text-gray-700">Toys & Games</label>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input id="watches" name="watches" type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label htmlFor="watches" className="font-medium text-gray-700">Watches</label>
+                      </div>
+                    </div>
+                  </div>
                   <div>
                     <label htmlFor="about" className="block text-sm font-medium text-gray-700">
                       About Your Company
@@ -268,9 +286,9 @@ export default function Home() {
                     </label>
                     <div className="mt-2 flex items-center">
                       <span className="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                      <svg className="h-full w-full text-gray-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21" fill="currentColor">
-                        <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd" />
-                      </svg>
+                        <svg className="h-full w-full text-gray-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21" fill="currentColor">
+                          <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd" />
+                        </svg>
                       </span>
                       <button type="button" className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-dark-green">
                         Change
