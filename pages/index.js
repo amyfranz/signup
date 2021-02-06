@@ -1,28 +1,33 @@
-const registerCompany = async event => {
-  event.preventDefault()
-  console.log("send data");
-
-  const res = await fetch(
-    '/api/register',
-    {
-      body: JSON.stringify({
-        name: event.target.name.value
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST'
-    }
-  )
-};
-
 export default function Home() {
+  const registerUser = async event => {
+    event.preventDefault()
+
+    const res = await fetch(
+      '/api/register',
+      {
+        body: JSON.stringify({
+          name: event.target.company_name.value,
+          about: event.target.about.value,
+          sustainable: event.target.sustainable.value,
+          email: event.target.company_email.value,
+          website: event.target.company_website.value,
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST'
+      }
+    )
+
+    const result = await res.json()
+    console.log(result)
+  }
   return (
     <div>
       <div className="p-10" style={{ backgroundColor: "#A9D4B7" }}>
         <div className="md:grid md:gap-6">
           <div className="mt-5 md:mt-0 md:col-span-2">
-            <form onSubmit={registerCompany}>
+            <form onSubmit={registerUser}>
               <div className="shadow sm:rounded-md sm:overflow-hidden">
                 <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
                   <h1 className="mt-6 text-3xl font-extrabold" style={{ color: "#326D57" }}>Sustainable Me</h1>
